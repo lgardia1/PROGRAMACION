@@ -25,6 +25,7 @@ public class ExerciseLoop12345 {
 //        cajaFuerteVariable();
 //        numeroAdivinanza();
 arbolAsteriscos();
+//pedirNumero();
     }
 
     public static void exercise1() {
@@ -215,32 +216,38 @@ arbolAsteriscos();
           * * *  
    */
     Scanner input = new Scanner(System.in);
-    int cantidad = input.nextInt();
-    int espacio = cantidad - 1 , limiteEspacio = 0 , limiteAsterisco = 2 , asterisco = 1;
+    int cantidadAsterisco = input.nextInt();
+    int espacio = cantidadAsterisco - 1 , limiteEspacio = 0 , limiteAsterisco = 2 , asterisco = 1;
     
-    for(int i = 1;(cantidad-1)>=i ; i++){
+    for(int i = 1;(cantidadAsterisco)>=i ; i++){
         while(espacio>limiteEspacio){
             espacio--;
             System.out.print(" ");
         }
-        espacio = cantidad - 1;
+        espacio = cantidadAsterisco - 1;
         limiteEspacio++;
         while(asterisco<limiteAsterisco){
             asterisco++;
             System.out.print("* ");
         }
-        asterisco = 1;
+        asterisco = 1; 
         limiteAsterisco++;
         System.out.println("");
     }
     }
-   
    
 //Dados dos número, escribir todos los números pares esntre ellos inclusive
 
 //Concadenamos una cadena de caracteres segun la veces que el usuario dicte
   
     public static void pedirNumero() {
+        /*
+    Pedir al usaurio que introduzca números enteros hasta que ponga 0, el programa debe de mostrar:
+    1.-Cuantos número negativos introducidos
+    2.-Numeros positivos
+    3.-La suma aritmetica de todos los números 
+    4.-Y la media que hay entre todos.
+         */
         Scanner input = new Scanner(System.in);
         int sumar, number, positivos, media, negativos;
         negativos = 0;
@@ -266,13 +273,5 @@ arbolAsteriscos();
         System.out.println("Has introducido números: " + negativos);
         System.out.println("La suma aritmetica de todos los números que has introducido es de: " + sumar);
         System.out.println("La media entre todos lo números que has introducido es de: " + mediaFinal);
-
-        /*
-    Pedir al usaurio que introduzca números enteros hasta que ponga 0, el programa debe de mostrar:
-    1.-Cuantos número negativos introducidos
-    2.-Numeros positivos
-    3.-La suma aritmetica de todos los números 
-    4.-Y la media que hay entre todos.
-         */
     }
 }
