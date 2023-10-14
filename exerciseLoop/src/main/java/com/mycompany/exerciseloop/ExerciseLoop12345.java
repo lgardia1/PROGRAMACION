@@ -14,21 +14,24 @@ import javax.swing.JOptionPane;
 public class ExerciseLoop12345 {
 
     public static void main(String[] args) {
-//        exercise1();
-//        exercise2();
-//        exercise3();
-//        exercise4();
-//        exercise5();
-//        exerciseLoopI();
-//        pedirNumero();
-//        cajaFuerte();
-//        cajaFuerteVariable();
-//        numeroAdivinanza();
-arbolAsteriscos();
-//pedirNumero();
+        exercise1();
+        exercise2();
+        exercise3();
+        exercise4();
+        exercise5();
+        exerciseLoopI();
+        pedirNumero();
+        cajaFuerte();
+        cajaFuerteVariable();
+        numeroAdivinanza();
+        arbolAsteriscos();
+        numerosPares();
+        cadenaDeCaracteres();
+        pedirNumero();
     }
 
     public static void exercise1() {
+        //Imprimir del 1 al 10
         byte i;
         System.out.println("Writing from 1 to 10 ");
         i = 10;
@@ -40,8 +43,9 @@ arbolAsteriscos();
     }
 
     public static void exercise2() {
+        //Imprimir del 2 al 20, solamente los números pares.
         byte i;
-        System.out.println("Writing from 1 to 10 ");
+        System.out.println("Writing from 20 to 2, even number ");
         i = 2;
         while (i <= 20) {
             if (i % 2 == 0) {
@@ -53,8 +57,9 @@ arbolAsteriscos();
     }
 
     public static void exercise3() {
+        //Del 20 al 2 en número impares.
         byte i;
-        System.out.println("Writing from 1 to 10 ");
+        System.out.println("Writing from 20 to 2, odd number");
         i = 20;
         while (i >= 2) {
             if (i % 2 != 0) {
@@ -66,6 +71,7 @@ arbolAsteriscos();
     }
 
     public static void exercise4() {
+        //Cuando escriba el número 3 se cierra el programa.
         byte i;
         System.out.println("Escriba el numero 3 para acabar el programa");
         do {
@@ -76,8 +82,9 @@ arbolAsteriscos();
     }
 
     public static void exercise5() {
+        //Hacer una calculadora que permita, sumar, dividir y restar.Después de dar el resultado que indique si quieres continuarusando la calculadora
         JOptionPane.showMessageDialog(null, "Calculadora inicida");
-        String end;
+        String end = "";
         Scanner input = new Scanner(System.in);
         do {
             String option = JOptionPane.showInputDialog("¿Que quires hacer? SUMAR/RESTAR/MULTIPLICAR/DIVIDIR");
@@ -110,15 +117,17 @@ arbolAsteriscos();
                 end = end.toLowerCase();
             } else {
                 JOptionPane.showMessageDialog(null, "ERROR, escribe bien la cadena de caractes");
-                end = JOptionPane.showInputDialog("¿Aún asi puedes acabar aquí? FIN");
+                end = JOptionPane.showInputDialog("Aún asi puedes ¿quieres acabar aquí? FIN");
                 end = end.toLowerCase();
             }
-        } while (end != "fin");
-        System.out.println("hola");
+        } while (!"fin".equals(end));
+        System.out.println("Calculadora acabada finalizada");
     }
 
     public static void exerciseLoopI() {
+        //Un programa que te clacule un factorial y te imprima el prodecimiento que ha hecho para calcularlo.
         Scanner input = new Scanner(System.in);
+        System.out.println("Introduca el factorial");
         int a = input.nextInt();
         int i = a;
         int result = 1;
@@ -203,9 +212,9 @@ arbolAsteriscos();
         System.out.println("Correcto el número es: " + randomNumber);
     }
 
-    public static void arbolAsteriscos(){
-    //Hacer un arbol de asteriscos
-    /*
+    public static void arbolAsteriscos() {
+        //Hacer un arbol de asteriscos
+        /*
             *
            * *
           * * *
@@ -214,32 +223,95 @@ arbolAsteriscos();
           * * *
           * * *
           * * *  
-   */
-    Scanner input = new Scanner(System.in);
-    int cantidadAsterisco = input.nextInt();
-    int espacio = cantidadAsterisco - 1 , limiteEspacio = 0 , limiteAsterisco = 2 , asterisco = 1;
-    
-    for(int i = 1;(cantidadAsterisco)>=i ; i++){
-        while(espacio>limiteEspacio){
-            espacio--;
-            System.out.print(" ");
+         */
+        Scanner input = new Scanner(System.in);
+        int filasAsteriscos = input.nextInt();
+        int espacio = filasAsteriscos - 1, limiteEspacio = 0, limiteAsterisco = 2, asteriscos = 1;
+        int espacioTronco = filasAsteriscos / 2, asteriscosTronco = filasAsteriscos / 2, filasTronco = filasAsteriscos / 2;
+        System.out.println("Introduzca el número de filas que tendra el arbol de asteriscos");
+        //Flecha:
+        for (int i = 1; filasAsteriscos >= i; i++) {
+            while (espacio > limiteEspacio) {
+                espacio--;
+                System.out.print(" ");
+            }
+            espacio = filasAsteriscos - 1;
+            limiteEspacio++;
+            while (asteriscos < limiteAsterisco) {
+                asteriscos++;
+                System.out.print("* ");
+            }
+            asteriscos = 1;
+            limiteAsterisco++;
+            System.out.println("");
         }
-        espacio = cantidadAsterisco - 1;
-        limiteEspacio++;
-        while(asterisco<limiteAsterisco){
-            asterisco++;
-            System.out.print("* ");
+        //Tronco:
+        //La cantidad de espacios y asteriscos del tronco será la mitad de las filas que hay.
+        for (int i = 1; filasTronco >= i; i++) {
+            while (espacioTronco > 0) {
+                espacioTronco--;
+                System.out.print(" ");
+            }
+            espacioTronco = filasAsteriscos / 2;
+            while (asteriscos <= asteriscosTronco) {
+                asteriscos++;
+                System.out.print("* ");
+            }
+            asteriscos = 1;
+            System.out.println("");
         }
-        asterisco = 1; 
-        limiteAsterisco++;
-        System.out.println("");
     }
-    }
-   
-//Dados dos número, escribir todos los números pares esntre ellos inclusive
 
-//Concadenamos una cadena de caracteres segun la veces que el usuario dicte
-  
+    public static void numerosPares() {
+        //Dados dos número, escribir todos los números pares entre ellos inclusive
+        Scanner input = new Scanner(System.in);
+        System.out.println("Introduzca 2 números:");
+        int a, b, bucleA, bucleB; //Creamos unas variables que valen igual a la entrada de teclado de las variable a y b, se usaran para bucles y
+        //la razon de esta separación es porque cuando el bucle acaba a y b con el mismo valor, eso hace que en la parte de 
+        //la condicion de while nunca acabe porque no da false, cuando esta condicion esta escrita en el caso que esceibamos
+        //el mismo número y nos lleve al inicio para escirbir un número que sea diferente.
+        do {
+            a = input.nextInt();
+            b = input.nextInt();
+            bucleA = a;
+            bucleB = b;
+            if (a == b) {
+                System.out.println("Introduzca 2 numeros distintos");
+            }
+            if (a < b) {
+                System.out.println("Los pares entre " + a + " y " + b + " son:");
+                while (bucleA != bucleB) {
+                    if (bucleA % 2 == 0) {
+                        System.out.print(bucleA + " ");
+                    }
+                    bucleA++;
+                }
+            }
+            if (b < a) {
+                System.out.println("Los pares entre " + b + " y " + a + " son:");
+                while (bucleB != bucleA) {
+                    if (bucleB % 2 == 0) {
+                        System.out.print(bucleB + " ");
+                    }
+                    bucleB++;
+                }
+            }
+        } while (a == b);
+        System.out.println("Fin del programa");
+    }
+
+    public static void cadenaDeCaracteres() {
+        //Concadenamos una cadena de caracteres segun la veces que el usuario dicte
+        Scanner input = new Scanner(System.in);
+        System.out.println("Cadena de caractéres");
+        String cadenaCaracteres = input.next();
+        System.out.println("Número de veces que se repite");
+        int numero = input.nextInt();
+        for (int i = 0; i < numero; i++) {
+            System.out.print(cadenaCaracteres + "");
+        }
+    }
+
     public static void pedirNumero() {
         /*
     Pedir al usaurio que introduzca números enteros hasta que ponga 0, el programa debe de mostrar:
