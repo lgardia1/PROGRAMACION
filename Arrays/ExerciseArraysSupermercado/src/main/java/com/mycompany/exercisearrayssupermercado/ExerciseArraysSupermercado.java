@@ -3,6 +3,9 @@
  */
 package com.mycompany.exercisearrayssupermercado;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author Lucas
@@ -11,6 +14,7 @@ public class ExerciseArraysSupermercado {
 
     public static void main(String[] args) {
         supermercado();
+        varianteSupermercado();
     }
 
     public static void supermercado() {
@@ -29,9 +33,13 @@ public class ExerciseArraysSupermercado {
         Lechuga....0.90€
         Tomate....8€
          */
+
+        //Inicializar los arrays de productos y precios:
         String[] productos = inicializarProductos();
         float[] precios = inicializarPrecios();
+        //Muestra lista:
         mostrarLista(precios, productos);
+        //Muestra total sin IVA y con IVA, además devuelve el valor que muestra:
         float total = mostrarTotal(precios);
         float totalIVA = IVA(total);
     }
@@ -61,7 +69,7 @@ public class ExerciseArraysSupermercado {
     }
 
     public static void mostrarLista(float[] precios, String[] productos) {
-        for (int i = 0; i < precios.length; i++) {
+        for (int i = 0; i < productos.length; i++) {
             System.out.println(productos[i] + " " + precios[i] + " €");
         }
     }
@@ -71,18 +79,73 @@ public class ExerciseArraysSupermercado {
         for (int i = 0; i < precios.length; i++) {
             resultado = resultado + precios[i];
         }
-        System.out.printf("Total %.2f €\n", resultado);
+        System.out.printf("Total sin IVA %.2f €\n", resultado);
         return resultado;
     }
 
     public static float IVA(float precioTotal) {
-        float iva = 1.21f;
-        float precioIVA = (iva * precioTotal);
-        System.out.printf("Tiene un IVA de: %.2f €", precioIVA);
-        return precioIVA;
+        float iva = 0.21f;
+        float precioIVA = iva * precioTotal;
+        float totalIVA = precioTotal + precioIVA;
+        System.out.printf("Total con IVA: %.2f €\nIVA es de: %.2f €", totalIVA, precioIVA);
+        return totalIVA;
     }
-    /*
+
+    public static void varianteSupermercado() {
+        /*
     Variante mas dificil:
     Pedir al usuario que introduzca los productos y sus precios respectivamente
-     */
+         */
+
+        //Inicializamos los productos ajustada y los precios:
+        ArrayList<String> productos = pedirProductos();
+        //Mostramos la lista:
+        mostrarListaAjustada(precios, productos);
+        //Muestra total sin IVA y con IVA. Con la lista de productos ajustada con la lista de precios-
+        float total = mostrarTotalAjustado(precios, productos);
+        float totalIVA = IVA(total);
+
+    }
+
+    public static ArrayList<String> pedirProductos() {
+        Scanner input = new Scanner(System.in);
+        boolean z = true;
+        ArrayList<String> productos = new ArrayList();
+        for (int i = 0; i < 7 && z; i++) {
+            System.out.println("Intoduzca producto: ");
+            String entradaProductos = input.nextLine();
+            if (entradaProductos.isEmpty()) {
+                z = false;
+            } else {
+                productos.add(entradaProductos);
+                pedirPrecios();
+            }
+        }
+        return productos;
+    }
+
+    static ArrayList<Float> precios = new ArrayList();
+
+    public static ArrayList<Float> pedirPrecios() {
+        System.out.println("Inroduzca precio: ");
+        Scanner input = new Scanner(System.in);
+        float entradaPrecios = input.nextFloat();
+        precios.add(entradaPrecios);
+        return precios;
+    }
+
+    public static void mostrarListaAjustada(ArrayList<Float> precios, ArrayList<String> productos) {
+        for (int i = 0; i < productos.size(); i++) {
+            System.out.println(productos.get(i) + " " + precios.get(i) + " €");
+        }
+    }
+
+    public static float mostrarTotalAjustado(ArrayList<Float> precios, ArrayList<String> productos) {
+        float resultado = 0;
+        for (int i = 0; i < productos.size(); i++) {
+            resultado = resultado + precios.get(i);
+        }
+        System.out.printf("Total sin IVA %.2f €\n", resultado);
+        return resultado;
+    }
 }
