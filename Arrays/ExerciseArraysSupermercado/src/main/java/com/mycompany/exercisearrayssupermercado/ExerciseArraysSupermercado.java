@@ -98,7 +98,7 @@ public class ExerciseArraysSupermercado {
          */
 
         //Inicializamos los productos ajustada y los precios:
-        ArrayList<String> productos = pedirProductos();
+        ArrayList<String> productos = pedirProductosPrecios();
         //Mostramos la lista:
         mostrarListaAjustada(precios, productos);
         //Muestra total sin IVA y con IVA. Con la lista de productos ajustada con la lista de precios-
@@ -107,7 +107,7 @@ public class ExerciseArraysSupermercado {
 
     }
 
-    public static ArrayList<String> pedirProductos() {
+    public static ArrayList<String> pedirProductosPrecios() {
         Scanner input = new Scanner(System.in);
         boolean z = true;
         ArrayList<String> productos = new ArrayList();
