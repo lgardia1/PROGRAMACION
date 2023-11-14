@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class ExerciseArraysSupermercado {
 
     public static void main(String[] args) {
-        supermercado();
+//        supermercado();
         varianteSupermercado();
     }
 
@@ -97,41 +97,32 @@ public class ExerciseArraysSupermercado {
     Pedir al usuario que introduzca los productos y sus precios respectivamente
          */
 
-        //Inicializamos los productos ajustada y los precios:
-        ArrayList<String> productos = pedirProductosPrecios();
-        //Mostramos la lista:
-        mostrarListaAjustada(precios, productos);
-        //Muestra total sin IVA y con IVA. Con la lista de productos ajustada con la lista de precios-
-        float total = mostrarTotalAjustado(precios, productos);
+        pedirProductosPrecios();
+        mostrarListaAjustada(preciosAjustados, productosAjustados);
+        float total = mostrarTotalAjustado(preciosAjustados, productosAjustados);
         float totalIVA = IVA(total);
-
     }
+    //Inicializar varibales de manera generalizada:
+    static ArrayList<String> productosAjustados;
+    static ArrayList<Float> preciosAjustados;
 
-    public static ArrayList<String> pedirProductosPrecios() {
+    public static void pedirProductosPrecios() {
         Scanner input = new Scanner(System.in);
         boolean z = true;
-        ArrayList<String> productos = new ArrayList();
+        productosAjustados = new ArrayList();
+        preciosAjustados = new ArrayList();
         for (int i = 0; i < 7 && z; i++) {
             System.out.println("Intoduzca producto: ");
             String entradaProductos = input.nextLine();
             if (entradaProductos.isEmpty()) {
                 z = false;
             } else {
-                productos.add(entradaProductos);
-                pedirPrecios();
+                productosAjustados.add(entradaProductos);
+                System.out.println("Inroduzca precio: ");
+                float entradaPrecios = input.nextFloat();
+                preciosAjustados.add(entradaPrecios);
             }
         }
-        return productos;
-    }
-
-    static ArrayList<Float> precios = new ArrayList();
-
-    public static ArrayList<Float> pedirPrecios() {
-        System.out.println("Inroduzca precio: ");
-        Scanner input = new Scanner(System.in);
-        float entradaPrecios = input.nextFloat();
-        precios.add(entradaPrecios);
-        return precios;
     }
 
     public static void mostrarListaAjustada(ArrayList<Float> precios, ArrayList<String> productos) {

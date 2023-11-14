@@ -13,13 +13,12 @@ import java.util.Scanner;
 public class Mavenprojectfunctions {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        workingWithScanner();
-        System.out.print("Has salido de la función: ");
-        workingWithPrintf();
+        workingWithScanner();//Las funciones sirven para ejecutar subprocesos, este es un ejemplo de uno.
+        workingWithPrintf();//Las funciones pueden ser estaticas, no habra que hacer una instnacia, lo malo que no podremos tener varios obketos con diferentes valores.
+                            //Tambien puedene ser void, en caso de serlo, este retorna no retorna un valor, y de lo contrario lo hace, alfinal retornando una varibale.
+                            //Cada variable de cada funcion es independiente, la manera de comuncar funciones seria poniendo valores entre los parentesis o haciendo variables generales.
     }
-    
-    public static void workingWithScanner (){
+    public static void workingWithScanner (){ //Proceso
         Scanner keyboard = new Scanner(System.in);
     System.out.println("Introduzca un número entero");
     int number = keyboard.nextInt();
